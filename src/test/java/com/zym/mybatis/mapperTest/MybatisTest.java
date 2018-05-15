@@ -44,19 +44,19 @@ public class MybatisTest {
 		}
 	}
 
-	@Test
-	public void test02() throws IOException {
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		SqlSession session = sqlSessionFactory.openSession();
-		try {
-			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
-			Object[] args = {"zhao", 3};
-			mapper.updateEmployeeById(args);
-		} finally {
-			session.close();
-		}
-	}
+//	@Test
+//	public void test02() throws IOException {
+//		String resource = "mybatis-config.xml";
+//		InputStream inputStream = Resources.getResourceAsStream(resource);
+//		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//		SqlSession session = sqlSessionFactory.openSession();
+//		try {
+//			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+//			Object[] args = {"zhao", 3};
+//			mapper.updateEmployeeById(args);
+//		} finally {
+//			session.close();
+//		}
+//	}
 
 }
