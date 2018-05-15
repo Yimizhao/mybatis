@@ -38,6 +38,7 @@ public class MybatisTest {
 		try {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 			Employee employee = mapper.getEmployeeById(3);
+			System.out.println(mapper.getClass());
 			System.out.println(employee);
 		} finally {
 			session.close();

@@ -1,0 +1,20 @@
+1、创建mybatis-config.xml全局配置文件
+	1.1设置dataSource
+	1.2注册mapper  resource=[mapper的类路径]
+2、创建Mappper的XML文件(sql映射文件)
+3、创建于MapperXML对应的接口类
+*MapperXML中namespace为借口的路径
+接口类定义对应的方法签名（与Mapper的ID名相同
+例：
+<mapper namespace="com.zym.mybatis.mapper.EmployeeMapper">
+	<select id="getEmployeeById" resultType="com.zym.mybatis.test.domain.Employee">
+		select id, last_name
+		lastName,gender,email from tbl_employee
+		where id = #{id}
+	</select>
+</mapper>）
+
+@Mapper
+public interface com.zym.mybatis.mapper.EmployeeMapper {
+	public Employee getEmployeeById(int id);
+}

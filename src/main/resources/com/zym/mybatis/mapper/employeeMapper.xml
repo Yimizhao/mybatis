@@ -8,7 +8,7 @@
 		lastName,gender,email from tbl_employee
 		where id = #{id}
 	</select>
-	<update id="updateEmployeeById">
-		UPDATE tbl_employee SET email = #{email} WHERE id = #{id}
-	</update>
+<!-- 	<update id="updateEmployeeById"> -->
+<!-- 		UPDATE tbl_employee SET email = #{email} WHERE id = #{id} -->
+<!-- 	</update> -->
 </mapper>

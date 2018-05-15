@@ -7,6 +7,4 @@ import com.zym.mybatis.test.domain.Employee;
 @Mapper
 public interface EmployeeMapper {
 	public Employee getEmployeeById(int id);
-
-	public void updateEmployeeById(Object[] args);
 }
