@@ -38,6 +38,23 @@ public class Employee {
 		this.email = email;
 	}
 
+	public Employee(Integer id, String lastName, String gender, String email) {
+		super();
+		this.id = id;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.email = email;
+	}
+	public Employee(String lastName, String gender, String email) {
+		super();
+		this.lastName = lastName;
+		this.gender = gender;
+		this.email = email;
+	}
+
+	public Employee() {
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", lastName=" + lastName + ", gender=" + gender + ", email=" + email + "]";
