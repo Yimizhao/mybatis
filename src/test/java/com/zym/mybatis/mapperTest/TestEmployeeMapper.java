@@ -23,8 +23,8 @@ public class TestEmployeeMapper {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 			Employee employee = new Employee("Lee", "0", "123@2564");
 			mapper.addEmp(employee);
-			System.out.println(mapper.getClass().getName());
 			session.commit();
+			System.out.println(employee);
 		} finally {
 			session.close();
 		}
@@ -75,6 +75,19 @@ public class TestEmployeeMapper {
 			System.out.println(employee);
 		} finally {
 			session.close();
+		}
+	}
+
+	@Test
+	public void testGetEmployeeByIdAndLastName() throws IOException {
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+			Employee employee = mapper.getEmployeeByIdAndLastName(8, "Lee");
+			System.out.println(employee);
+		} finally {
+			sqlSession.close();
 		}
 	}
 
