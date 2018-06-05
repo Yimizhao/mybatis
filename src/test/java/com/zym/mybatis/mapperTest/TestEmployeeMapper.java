@@ -17,9 +17,7 @@ public class TestEmployeeMapper {
 	@Test
 	public void testaddEmp() throws IOException {
 
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
@@ -35,14 +33,14 @@ public class TestEmployeeMapper {
 	@Test
 	public void testdeleteEmpById() throws IOException {
 
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
-			mapper.deleteEmpById(1);
+			Integer re = mapper.deleteEmpById(3);
+			// 手动提交
 			session.commit();
+			System.out.println(re);
 		} finally {
 			session.close();
 		}
@@ -52,26 +50,23 @@ public class TestEmployeeMapper {
 	@Test
 	public void testupdateEmp() throws IOException {
 
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		// 自动提交
 		SqlSession session = sqlSessionFactory.openSession(true);
 		try {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
 			System.out.println(mapper.getClass());
-			Employee employee = new Employee(2,"Lee", "0", "123@2564");
+			Employee employee = new Employee(3, "Lee", "0", "123@2564");
 			mapper.updateEmp(employee);
 		} finally {
 			session.close();
 		}
 
 	}
-	
+
 	@Test
 	public void testgetEmployeeById() throws IOException {
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
@@ -83,4 +78,10 @@ public class TestEmployeeMapper {
 		}
 	}
 
+	private SqlSessionFactory getSqlSessionFactory() throws IOException {
+		String resource = "mybatis-config.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		return sqlSessionFactory;
+	}
 }

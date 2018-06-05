@@ -13,7 +13,7 @@ public interface EmployeeMapper {
 	public void addEmp(Employee employee);
 	
 	// 删除数据
-	public void deleteEmpById(Integer id);
+	public Integer deleteEmpById(Integer id);
 	
 	// 修改数据
 	public void updateEmp(Employee employee);
