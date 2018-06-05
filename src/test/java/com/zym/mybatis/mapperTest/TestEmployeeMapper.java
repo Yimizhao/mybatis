@@ -2,6 +2,7 @@ package com.zym.mybatis.mapperTest;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -88,6 +89,21 @@ public class TestEmployeeMapper {
 			System.out.println(employee);
 		} finally {
 			sqlSession.close();
+		}
+	}
+
+	@Test
+	public void testGetEmployeesByLastName() throws IOException {
+		SqlSessionFactory sessionFactory = getSqlSessionFactory();
+		SqlSession session = sessionFactory.openSession();
+		try {
+			EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+			List<Employee> employees = mapper.getEmployeesByLastName("%e%");
+			for (Employee employee : employees) {
+				System.out.println(employee);
+			}
+		} finally {
+			session.close();
 		}
 	}
 

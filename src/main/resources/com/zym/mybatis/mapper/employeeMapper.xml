@@ -34,4 +34,8 @@
 	<select id="getEmployeeByIdAndLastName" resultType="com.zym.mybatis.test.domain.Employee">
 		select * from tbl_employee where id = #{id} AND last_name = #{lastName}
 	</select>
+	<!-- 模糊查询 -->
+	<select id="getEmployeesByLastName" resultType="com.zym.mybatis.test.domain.Employee">
+		SELECT * FROM tbl_employee WHERE last_name LIKE #{lastName}
+	</select>
 </mapper>
