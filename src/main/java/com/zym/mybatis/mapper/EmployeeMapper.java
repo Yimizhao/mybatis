@@ -1,7 +1,9 @@
 package com.zym.mybatis.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,6 +16,10 @@ public interface EmployeeMapper {
 
 	// 模糊查询数据
 	public List<Employee> getEmployeesByLastName(String lastName);
+	
+	// 模糊查询数据（返回map）
+	@MapKey("id")
+	public Map<Integer, Employee> getEmployeesByLastNameReturnMap(String lastName);
 
 	// 查询数据(命名参数)
 	public Employee getEmployeeByIdAndLastName(@Param("id") Integer id, @Param("lastName") String lastName);

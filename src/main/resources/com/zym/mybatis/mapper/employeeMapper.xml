@@ -38,4 +38,10 @@
 	<select id="getEmployeesByLastName" resultType="com.zym.mybatis.test.domain.Employee">
 		SELECT * FROM tbl_employee WHERE last_name LIKE #{lastName}
 	</select>
+
+
+	<!-- getEmployeesByLastNameReturnMap -->
+	<select id="getEmployeesByLastNameReturnMap" resultType="com.zym.mybatis.test.domain.Employee">
+		SELECT * FROM tbl_employee WHERE last_name LIKE #{lastName}
+	</select>
 </mapper>
